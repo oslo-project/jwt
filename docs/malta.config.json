@@ -1,0 +1,22 @@
+{
+	"name": "@oslojs/jwt",
+	"description": "Parse and encode JSON web tokens.",
+	"domain": "https://jwt.oslojs.dev",
+	"twitter": "@oslo_project",
+	"asset_hashing": true,
+	"sidebar": [
+		{
+			"title": "API reference",
+			"pages": [["@oslojs/jwt", "/reference/main"]]
+		},
+		{
+			"title": "Links",
+			"pages": [
+				["GitHub", "https://github.com/oslo-project/jwt"],
+				["Oslo", "https://oslojs.dev"],
+				["Twitter", "https://twitter.com/pilcrowonpaper"],
+				["Donate", "https://github.com/sponsors/pilcrowOnPaper"]
+			]
+		}
+	]
+}

@@ -1,8 +1,8 @@
 ---
-title: "JWSRegisteredHeaderParameters.hasJWKSetURL()"
+title: "JWSRegisteredHeaders.hasJWKSetURL()"
 ---
 
-# JWSRegisteredHeaderParameters.hasJWKSetURL()
+# JWSRegisteredHeaders.hasJWKSetURL()
 
 Returns `true` if the `jku` parameter exists. This method does not check whether the parameter value is valid.
 

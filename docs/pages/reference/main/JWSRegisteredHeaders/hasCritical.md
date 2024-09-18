@@ -1,8 +1,8 @@
 ---
-title: "JWSRegisteredHeaderParameters.hasCritical()"
+title: "JWSRegisteredHeaders.hasCritical()"
 ---
 
-# JWSRegisteredHeaderParameters.hasCritical()
+# JWSRegisteredHeaders.hasCritical()
 
 Returns `true` if the `crit` parameter exists. This method does not check whether the parameter value is valid.
 

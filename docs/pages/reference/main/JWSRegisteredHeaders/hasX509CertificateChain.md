@@ -1,8 +1,8 @@
 ---
-title: "JWSRegisteredHeaderParameters.hasX509CertificateChain()"
+title: "JWSRegisteredHeaders.hasX509CertificateChain()"
 ---
 
-# JWSRegisteredHeaderParameters.hasX509CertificateChain()
+# JWSRegisteredHeaders.hasX509CertificateChain()
 
 Returns `true` if the `x5c` parameter exists. This method does not check whether the parameter value is valid.
 

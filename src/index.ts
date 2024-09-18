@@ -1,6 +1,8 @@
 import { decodeBase64, decodeBase64urlIgnorePadding, encodeBase64urlNoPadding } from "@oslojs/encoding";
 
-export function parseJWT(jwt: string): [header: object, payload: object, signature: Uint8Array] {
+export function parseJWT(
+	jwt: string
+): [header: object, payload: object, signature: Uint8Array, signatureMessage: Uint8Array] {
 	const parts = jwt.split(".");
 	if (parts.length !== 3) {
 		throw new Error("Invalid JWT");
@@ -29,21 +31,44 @@ export function parseJWT(jwt: string): [header: object, payload: object, signatu
 	if (typeof payload !== "object" || payload === null) {
 		throw new Error("Invalid JWT: Invalid payload");
 	}
-
-	return [header, payload, signature];
+	const signatureMessage = new TextEncoder().encode(parts[0] + "." + parts[1]);
+	return [header as object, payload as object, signature, signatureMessage];
 }
 
-export function encodeJWT(header: object, payload: object, signature: Uint8Array): string {
-	const encodedHeader = encodeBase64urlNoPadding(new TextEncoder().encode(JSON.stringify(header)));
-	const encodedPayload = encodeBase64urlNoPadding(new TextEncoder().encode(JSON.stringify(payload)));
+export function decodeJWT(jwt: string): object {
+	const parts = jwt.split(".");
+	if (parts.length !== 3) {
+		throw new Error("Invalid JWT");
+	}
+	let jsonPayload: string;
+	try {
+		jsonPayload = new TextDecoder().decode(decodeBase64urlIgnorePadding(parts[1]));
+	} catch {
+		throw new Error("Invalid JWT: Invalid base64url encoding");
+	}
+	let payload: unknown;
+	try {
+		payload = JSON.parse(jsonPayload);
+	} catch {
+		throw new Error("Invalid JWT: Invalid JSON encoding");
+	}
+	if (typeof payload !== "object" || payload === null) {
+		throw new Error("Invalid JWT: Invalid payload");
+	}
+	return payload as object;
+}
+
+export function encodeJWT(headerJSON: string, payloadJSON: string, signature: Uint8Array): string {
+	const encodedHeader = encodeBase64urlNoPadding(new TextEncoder().encode(headerJSON));
+	const encodedPayload = encodeBase64urlNoPadding(new TextEncoder().encode(payloadJSON));
 	const encodedSignature = encodeBase64urlNoPadding(signature);
 	const jwt = encodedHeader + "." + encodedPayload + "." + encodedSignature;
 	return jwt;
 }
 
-export function createJWTSignatureMessage(header: object, payload: object): Uint8Array {
-	const encodedHeader = encodeBase64urlNoPadding(new TextEncoder().encode(JSON.stringify(header)));
-	const encodedPayload = encodeBase64urlNoPadding(new TextEncoder().encode(JSON.stringify(payload)));
+export function createJWTSignatureMessage(headerJSON: string, payloadJSON: string): Uint8Array {
+	const encodedHeader = encodeBase64urlNoPadding(new TextEncoder().encode(headerJSON));
+	const encodedPayload = encodeBase64urlNoPadding(new TextEncoder().encode(payloadJSON));
 	const message = encodedHeader + "." + encodedPayload;
 	return new TextEncoder().encode(message);
 }
@@ -181,7 +206,7 @@ export class JWTClaims {
 	}
 }
 
-export class JWSHeaderParameters {
+export class JWSRegisteredHeaders {
 	private target: object;
 
 	constructor(target: object) {

@@ -11,10 +11,10 @@ A JavaScript library for parsing and encoding JSON web tokens (JWT) by [Oslo](ht
 - Fully typed
 
 ```ts
-import { parseJWT, JWSRegisteredHeaderParameters, JWTRegisteredClaims, joseAlgorithmHS256 } from "@oslojs/jwt";
+import { parseJWT, JWSRegisteredHeaders, JWTRegisteredClaims, joseAlgorithmHS256 } from "@oslojs/jwt";
 
 const [header, payload, signature] = parseJWT(jwt);
-const headerParameters = new JWSRegisteredHeaderParameters(header);
+const headerParameters = new JWSRegisteredHeaders(header);
 if (header.algorithm() !== joseAlgorithmHS256) {
 	throw new Error("Unsupported algorithm");
 }

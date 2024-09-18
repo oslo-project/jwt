@@ -1,8 +1,8 @@
 ---
-title: "JWSRegisteredHeaderParameters.hasX509CertificateSHA1Thumbprint()"
+title: "JWSRegisteredHeaders.hasX509CertificateSHA1Thumbprint()"
 ---
 
-# JWSRegisteredHeaderParameters.hasX509CertificateSHA1Thumbprint()
+# JWSRegisteredHeaders.hasX509CertificateSHA1Thumbprint()
 
 Returns `true` if the `x5t` parameter exists. This method does not check whether the parameter value is valid.
 

@@ -1,8 +1,8 @@
 ---
-title: "JWSRegisteredHeaderParameters.algorithm()"
+title: "JWSRegisteredHeaders.algorithm()"
 ---
 
-# JWSRegisteredHeaderParameters.algorithm()
+# JWSRegisteredHeaders.algorithm()
 
 Return the `alg` parameter value. Throws an `Error` if the parameter doesn't exist or the value isn't a string.
 

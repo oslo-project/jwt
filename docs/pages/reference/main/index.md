@@ -12,10 +12,11 @@ title: "@oslojs/jwt"
 
 ## Classes
 
-- [`JWSRegisteredHeaderParameters`](/reference/main/JWSRegisteredHeaderParameters)
+- [`JWSRegisteredHeaders`](/reference/main/JWSRegisteredHeaders)
 - [`JWTRegisteredClaims`](/reference/main/JWTRegisteredClaims)
 
 ## Functions
 
+- [`decodeJWT()`](/reference/main/decodeJWT)
 - [`encodeJWT()`](/reference/main/encodeJWT)
 - [`parseJWT()`](/reference/main/parseJWT)

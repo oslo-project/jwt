@@ -1,8 +1,8 @@
 ---
-title: "JWSRegisteredHeaderParameters.hasAlgorithm()"
+title: "JWSRegisteredHeaders.hasAlgorithm()"
 ---
 
-# JWSRegisteredHeaderParameters.hasAlgorithm()
+# JWSRegisteredHeaders.hasAlgorithm()
 
 Returns `true` if the `alg` parameter exists. This method does not check whether the parameter value is valid.
 

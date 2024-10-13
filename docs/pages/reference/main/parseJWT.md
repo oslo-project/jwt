@@ -9,7 +9,7 @@ Parses a JSON web token. Throws an `Error` if the token is not well-formed. This
 ## Definition
 
 ```ts
-function encodeJWT(jwt: string): [header: object, payload: header, signature: Uint8Array];
+function parseJWT(jwt: string): [header: object, payload: header, signature: Uint8Array];
 ```
 
 ### Parameters

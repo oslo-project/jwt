@@ -9,7 +9,7 @@ Parses and returns the token's payload. This does not check if the header or sig
 ## Definition
 
 ```ts
-function encodeJWT(jwt: string): object;
+function decodeJWT(jwt: string): object;
 ```
 
 ### Parameters

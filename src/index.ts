@@ -73,7 +73,7 @@ export function createJWTSignatureMessage(headerJSON: string, payloadJSON: strin
 	return new TextEncoder().encode(message);
 }
 
-export class JWTClaims {
+export class JWTRegisteredClaims {
 	private target: object;
 
 	constructor(target: object) {

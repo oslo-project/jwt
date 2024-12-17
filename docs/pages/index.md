@@ -15,7 +15,7 @@ import { parseJWT, JWSRegisteredHeaders, JWTRegisteredClaims, joseAlgorithmHS256
 
 const [header, payload, signature] = parseJWT(jwt);
 const headerParameters = new JWSRegisteredHeaders(header);
-if (header.algorithm() !== joseAlgorithmHS256) {
+if (headerParameters.algorithm() !== joseAlgorithmHS256) {
 	throw new Error("Unsupported algorithm");
 }
 const claims = new JWTRegisteredClaims(payload);
